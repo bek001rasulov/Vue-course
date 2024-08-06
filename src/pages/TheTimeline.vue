@@ -1,14 +1,21 @@
+<script setup>
+import { generateTimelineItems } from "../functions.js";
+
+const timelineItems = generateTimelineItems();
+</script>
+
 <template>
-  <div>
+  <div class="mt-[80px]">
     <ul>
       <li
-        v-for="i in [0, 1, 2, 3, 4, 5]"
-        class="relative flex flex-col items-center gap-2 border-b border-gray-200 py-10 px-4"
+        v-for="{ hour } in timelineItems"
+        class="relative flex flex-col items-center gap-2 border-t border-gray-200 py-10 px-4"
+        :key="hour"
       >
         <a
           href="#"
-          class="absolute -bottom-4 rounded bg-gray-100 px-2 font-mono text-lg text-gray-500"
-          >{{ i }}:00</a
+          class="absolute -top-4 rounded bg-gray-100 px-2 font-mono text-lg text-gray-500"
+          >{{ hour }}:00</a
         >
       </li>
     </ul>
